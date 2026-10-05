@@ -10,7 +10,7 @@ then produces an Excel file.
 docker compose up -d                       # PostgreSQL
 cd backend && python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env                       # put your SARVAM_API_KEY in it
+cp  .env                      
 uvicorn app.main:app --reload              # API on :8000  (docs at /docs)
 
 cd ../frontend && npm install && npm run dev   # UI on :5173
