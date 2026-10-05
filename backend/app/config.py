@@ -2,12 +2,15 @@
 environment variable or a `.env` file (pydantic-settings does the loading), so
 no secret (like the Sarvam key) is ever hard-coded."""
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
 
+ENV_FILE = Path(__file__).resolve().parent.parent / ".env" 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    database_url: str = "postgresql+psycopg2://postgres:Teer%409876@localhost:5432/airecruiter2"
+    model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
+
+    database_url: str 
 
     sarvam_api_key: str = ""
     sarvam_base_url: str = "https://api.sarvam.ai/v1"
